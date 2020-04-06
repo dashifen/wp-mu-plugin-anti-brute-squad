@@ -11,6 +11,7 @@
  * @noinspection PhpIncludeInspection
  */
 
+use Dashifen\AntiBruteSquad\AntiBruteSquad;
 use Dashifen\WPHandler\Handlers\HandlerException;
 
 // the following snippet finds the appropriate autoloader starting from a
@@ -26,7 +27,7 @@ else $autoloader = 'vendor/autoload.php';
 require_once $autoloader;
 
 try {
-    (new ACFSharingSettings())->initialize();
+    (new AntiBruteSquad())->initialize();
 } catch (HandlerException $exception) {
-    wp_die('Unable to initialize ACF sharing settings.');
+    wp_die('Unable to initialize Anti Brute Squad.');
 }
