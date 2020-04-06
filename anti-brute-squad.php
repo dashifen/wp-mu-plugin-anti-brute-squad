@@ -5,7 +5,6 @@
  * Description: An WordPress must-use plugin that limits login attempts to mitigate brute force attacks.
  * Author URI: mailto:dashifen@dashifen.com
  * Author: David Dashifen Kees
- * Version: 1.0.2
  *
  * @noinspection PhpStatementHasEmptyBodyInspection
  * @noinspection PhpIncludeInspection
