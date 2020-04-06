@@ -20,6 +20,6 @@ use Dashifen\WPHandler\Handlers\HandlerException;
         $antiBruteSquad = new AntiBruteSquad();
         $antiBruteSquad->initialize();
     } catch (HandlerException $e) {
-        wp_die($e->getMessage();
+        wp_die($e->getMessage());
     }
 })();
