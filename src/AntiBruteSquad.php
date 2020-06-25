@@ -79,12 +79,54 @@ class AntiBruteSquad extends AbstractPluginHandler
      */
     protected function preventBruteForceAttacks (): void
     {
+        if ($_SESSION['anti-brute-squad-failure-count'] >= $this->getLimit()) {
+            header('HTTP/1.0 401 Unauthorized');
+            wp_die($this->getMessage());
+        }
+    }
+    
+    /**
+     * getLimit
+     *
+     * Returns the number of attempts a visitor has before they're blocked from
+     * continuing to access the login form during this session.
+     *
+     * @return int
+     */
+    private function getLimit(): int
+    {
         $limit = apply_filters('anti-brute-squad-login-limit', 5);
         
-        if ($_SESSION['anti-brute-squad-failure-count'] >= $limit) {
-            header('HTTP/1.0 401 Unauthorized');
-            $message = __('You are not authorized to access this site.', 'anti-brute-squad');
-            wp_die(apply_filters('anti-brute-squad-access-blocked-message', $message));
-        }
+        // one would think that might be enough.  but, some people just want to
+        // watch the world burn, and such people might return something other
+        // than an integer when filtering our limit.  so, if what we have now
+        // isn't even a number, then we'll revert to the default.  we also find
+        // it's floor and explicitly cast it so that we are guaranteed to
+        // return an int.
+        
+        return (int) floor(is_numeric($limit) ? $limit : 5);
+    }
+    
+    /**
+     * getMessage
+     *
+     * Returns the on-screen message displayed when access to the login screen
+     * is blocked.
+     *
+     * @return string
+     */
+    private function getMessage(): string
+    {
+        $message = 'You are not authorized to access this site.';
+        
+        // it might be overkill to both offer the ability to internationalize
+        // our message and filter it, but another dev might prefer one over the
+        // other with respect to how best to change the default message into
+        // one that works best for them.  so, we'll do both.
+    
+        return apply_filters(
+            'anti-brute-squad-access-blocked-message',
+            __($message, 'anti-brute-squad')
+        );
     }
 }
