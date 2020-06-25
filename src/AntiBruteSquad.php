@@ -79,9 +79,12 @@ class AntiBruteSquad extends AbstractPluginHandler
      */
     protected function preventBruteForceAttacks (): void
     {
-        if ($_SESSION['anti-brute-squad-failure-count'] >= 5) {
+        $limit = apply_filters('anti-brute-squad-login-limit', 5);
+        
+        if ($_SESSION['anti-brute-squad-failure-count'] >= $limit) {
             header('HTTP/1.0 401 Unauthorized');
-            wp_die('You are not authorized to access this site.');
+            $message = __('You are not authorized to access this site.', 'anti-brute-squad');
+            wp_die(apply_filters('anti-brute-squad-access-blocked-message', $message));
         }
     }
 }
