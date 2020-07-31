@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "php": ">=7.1",
-        "dashifen/wp-handler": "^9.4"
+        "php": ">=7.4",
+        "dashifen/wp-handler": "^10"
     }
 }
