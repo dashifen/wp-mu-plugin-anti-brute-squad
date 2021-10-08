@@ -7,9 +7,6 @@
  * Author: David Dashifen Kees
  * Text Domain: anti-brute-squad
  * Version: 3.0.1
- *
- * @noinspection PhpStatementHasEmptyBodyInspection
- * @noinspection PhpIncludeInspection
  */
 
 use Dashifen\AntiBruteSquad\AntiBruteSquad;
