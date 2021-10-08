@@ -6,7 +6,7 @@
  * Author URI: mailto:dashifen@dashifen.com
  * Author: David Dashifen Kees
  * Text Domain: anti-brute-squad
- * Version: 1.2.0
+ * Version: 2.0.0
  *
  * @noinspection PhpStatementHasEmptyBodyInspection
  * @noinspection PhpIncludeInspection
@@ -15,9 +15,7 @@
 use Dashifen\AntiBruteSquad\AntiBruteSquad;
 use Dashifen\WPHandler\Handlers\HandlerException;
 
-if (file_exists($autoloader = dirname(ABSPATH) . '/deps/vendor/autoload.php'));
-elseif ($autoloader = file_exists(dirname(ABSPATH) . '/vendor/autoload.php'));
-elseif ($autoloader = file_exists(ABSPATH . 'vendor/autoload.php'));
+if (file_exists($autoloader = ABSPATH . 'wp-content/vendor/autoload.php'));
 else $autoloader = 'vendor/autoload.php';
 require_once $autoloader;
 
