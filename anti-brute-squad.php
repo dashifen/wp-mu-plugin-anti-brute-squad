@@ -6,7 +6,7 @@
  * Author URI: mailto:dashifen@dashifen.com
  * Author: David Dashifen Kees
  * Text Domain: anti-brute-squad
- * Version: 3.0.0
+ * Version: 3.0.1
  *
  * @noinspection PhpStatementHasEmptyBodyInspection
  * @noinspection PhpIncludeInspection
@@ -15,9 +15,9 @@
 use Dashifen\AntiBruteSquad\AntiBruteSquad;
 use Dashifen\WPHandler\Handlers\HandlerException;
 
-if (file_exists($autoloader = ABSPATH . 'wp-content/vendor/autoload.php'));
-else $autoloader = 'vendor/autoload.php';
-require_once $autoloader;
+if (!class_exists('Dashifen\AntiBruteSquad\AntiBruteSquad')) {
+  require_once 'vendor/autoload.php';
+}
 
 (function() {
     try {
