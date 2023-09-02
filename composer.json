@@ -1,5 +1,5 @@
 {
-    "name": "dashifen/anti-brute-squad",
+    "name": "dashifen/wp-mu-plugin-anti-brute-squad",
     "description": "A WordPress MU plugin that prevents brute force attacks by limiting the number of failed login attempts during a browser session.",
     "minimum-stability": "stable",
     "type": "wordpress-muplugin",
