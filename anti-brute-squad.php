@@ -1,26 +1,27 @@
 <?php
 
 /**
- * Plugin Name: Anti Brute Squad
+ * Plugin Name: Anti-Brute Squad
  * Description: An WordPress must-use plugin that limits login attempts to mitigate brute force attacks.
  * Author URI: mailto:dashifen@dashifen.com
  * Author: David Dashifen Kees
- * Text Domain: anti-brute-squad
- * Version: 3.0.1
+ * Version: 3.1.0
  */
 
-use Dashifen\AntiBruteSquad\AntiBruteSquad;
+namespace Dashifen\WordPress\Plugins\MustUse;
+
 use Dashifen\WPHandler\Handlers\HandlerException;
+use Dashifen\WordPress\Plugins\MustUse\AntiBruteSquad\AntiBruteSquad;
 
 if (!class_exists('Dashifen\AntiBruteSquad\AntiBruteSquad')) {
   require_once 'vendor/autoload.php';
 }
 
-(function() {
-    try {
-        $antiBruteSquad = new AntiBruteSquad();
-        $antiBruteSquad->initialize();
-    } catch (HandlerException $e) {
-        wp_die($e->getMessage());
-    }
+(function () {
+  try {
+    $antiBruteSquad = new AntiBruteSquad();
+    $antiBruteSquad->initialize();
+  } catch (HandlerException $e) {
+    AntiBruteSquad::catcher($e);
+  }
 })();

@@ -1,6 +1,6 @@
 # Anti Brute Squad
 
-Anti Brute Squad is a very straightforward way to block access to your 
+Anti-Brute Squad is a very straightforward way to block access to your 
 WordPress Dashboard after a certain number of failed login attempts.  By 
 default, that number is five, but you can change it with a filter (see below).
 
@@ -8,10 +8,10 @@ It's setup to become a composer dependency, but if that's not your way of
 handling WordPress plugins, feel free to simply copy the logic out of the
 `src/AntiBruteSquad.php` file.  If you do use composer, then as long as you
 are using both the `composer/installers` and `lkwdwrd/wp-muplugin-loader` 
-packages, Anti Brute Squad should load up as an MU plugin.
+packages, Anti-Brute Squad should load up as an MU plugin.
 
-As written, this plugin requires at least PHP 7.1.  It has been tested up to
-PHP 7.4.
+As written, this plugin requires at least PHP 8.2.  It has been tested up to
+PHP 8.4.
 
 ## Filters
 

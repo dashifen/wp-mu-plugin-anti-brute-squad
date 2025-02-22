@@ -1,26 +1,26 @@
 {
-    "name": "dashifen/wp-mu-plugin-anti-brute-squad",
-    "description": "A WordPress MU plugin that prevents brute force attacks by limiting the number of failed login attempts during a browser session.",
-    "minimum-stability": "stable",
-    "type": "wordpress-muplugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "David Dashifen Kees",
-            "email": "dashifen@dashifen.com"
-        }
-    ],
-    "config": {
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "autoload": {
-        "psr-4": {
-            "Dashifen\\AntiBruteSquad\\": "src"
-        }
-    },
-    "require": {
-        "php": ">=7.4",
-        "dashifen/wp-handler": "^10"
+  "name": "dashifen/wp-mu-plugin-anti-brute-squad",
+  "description": "A WordPress MU plugin that prevents brute force attacks by limiting the number of failed login attempts during a browser session.",
+  "minimum-stability": "stable",
+  "type": "wordpress-muplugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Dashifen Kees",
+      "email": "dashifen@dashifen.com"
     }
+  ],
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Dashifen\\WordPress\\Plugins\\MustUse\\AntiBruteSquad\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "dashifen/wp-handler": "^11"
+  }
 }
