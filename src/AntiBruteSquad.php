@@ -7,6 +7,8 @@ use Dashifen\WPHandler\Handlers\Plugins\AbstractPluginHandler;
 
 class AntiBruteSquad extends AbstractPluginHandler
 {
+  private string $sessionId = 'anti-brute-squad-failure-count';
+  
   /**
    * Uses addAction and/or addFilter to attach protected methods of this object
    * to the ecosystem of WordPress action and filter hooks.
@@ -36,11 +38,13 @@ class AntiBruteSquad extends AbstractPluginHandler
    */
   protected function startSession(): void
   {
+    $this->sessionId = apply_filters('anti-brute-squad-session-id', $this->sessionId);
+    
     if (session_status() !== PHP_SESSION_ACTIVE) {
       session_start();
     }
     
-    if (!isset($_SESSION['anti-brute-squad-failure-count'])) {
+    if (!isset($_SESSION[$this->sessionId])) {
       $this->resetFailedLoginCount();
     }
   }
@@ -52,7 +56,7 @@ class AntiBruteSquad extends AbstractPluginHandler
     // attempt to re-log in during the same session, but just in case, we
     // want to give them their same count the second time.
     
-    $_SESSION['anti-brute-squad-failure-count'] = 0;
+    $_SESSION[$this->sessionId] = 0;
   }
   
   /**
@@ -64,7 +68,7 @@ class AntiBruteSquad extends AbstractPluginHandler
    */
   protected function countFailedLogin(): void
   {
-    $_SESSION['anti-brute-squad-failure-count']++;
+    $_SESSION[$this->sessionId]++;
   }
   
   /**
@@ -77,7 +81,7 @@ class AntiBruteSquad extends AbstractPluginHandler
    */
   protected function preventBruteForceAttacks(): void
   {
-    if ($_SESSION['anti-brute-squad-failure-count'] >= $this->getLimit()) {
+    if ($_SESSION[$this->sessionId] >= $this->getLimit()) {
       header('HTTP/1.0 401 Unauthorized');
       wp_die($this->getMessage());
     }

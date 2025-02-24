@@ -13,7 +13,7 @@ namespace Dashifen\WordPress\Plugins\MustUse;
 use Dashifen\WPHandler\Handlers\HandlerException;
 use Dashifen\WordPress\Plugins\MustUse\AntiBruteSquad\AntiBruteSquad;
 
-if (!class_exists('Dashifen\AntiBruteSquad\AntiBruteSquad')) {
+if (!class_exists(AntiBruteSquad::class)) {
   require_once 'vendor/autoload.php';
 }
 
